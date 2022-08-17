@@ -26,6 +26,10 @@ export default {
       }
     },).then((response)=>{
       let data=response.data;
+      if (data.code==="10000"){
+        alert("请先登录!");
+        window.location.href="login.html";
+      }
     })
 
   },

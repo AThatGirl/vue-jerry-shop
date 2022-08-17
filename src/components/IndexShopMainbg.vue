@@ -5,41 +5,22 @@
       <!--今日推荐 -->
 
       <div class="am-g am-g-fixed recommendation">
-        <div class="clock am-u-sm-3">
-          <img src="static/images/2016.png ">
-          <p>今日<br>推荐</p>
+        <div class="clock am-u-sm-3" style="background-color: saddlebrown">
+          <img src="static/images/2022.png " style="border-radius: 50%">
+          <p>新品<br>推荐</p>
         </div>
-        <a href="introduction.html">
+        <a href="introduction.html" v-for="rp in recommendProducts" :key="rp.productId">
           <div class="am-u-sm-4 am-u-lg-3 ">
             <div class="info ">
-              <h3>真的有鱼</h3>
-              <h4>开年福利篇</h4>
+              <h3>{{ rp.productName }}</h3>
+              <h4>{{ rp.content }}</h4>
             </div>
             <div class="recommendationMain one">
-              <img src="static/images/tj.png ">
+
+              <img :src="'static/product-images/'+rp.imgs[0].url ">
             </div>
           </div>
         </a>
-        <a href="introduction.html">
-          <div class="am-u-sm-4 am-u-lg-3 ">
-            <div class="info ">
-              <h3>囤货过冬</h3>
-              <h4>让爱早回家</h4>
-            </div>
-            <div class="recommendationMain two">
-              <img src="static/images/tj1.png ">
-            </div>
-          </div>
-        </a>
-        <div class="am-u-sm-4 am-u-lg-3 ">
-          <div class="info ">
-            <h3>浪漫情人节</h3>
-            <h4>甜甜蜜蜜</h4>
-          </div>
-          <div class="recommendationMain three">
-            <img src="static/images/tj2.png ">
-          </div>
-        </div>
 
       </div>
       <div class="clear "></div>
@@ -1431,8 +1412,26 @@
 </template>
 
 <script>
+import axios from "axios";
+import {ref} from "vue";
+
+let baseURL="http://localhost:8888/";
+
 export default {
-  name: "IndexShopMainbg"
+  name: "IndexShopMainbg",
+  setup(){
+    let url=baseURL+"index/list-recommends";
+    let recommendProducts=ref([]);
+
+    axios.get(url).then((response)=>{
+      recommendProducts.value=response.data.data;
+    })
+
+    return{
+      recommendProducts,
+    }
+  }
+
 }
 </script>
 

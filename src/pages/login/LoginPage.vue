@@ -85,8 +85,8 @@ export default {
             //登陆成功，把token存储到cookie
             setCookieValue("token",resultVO.msg);
             //将用户昵称和头像路径保存到cookie
-            setCookieValue("username",resultVO.username);
-            setCookieValue("userimg",resultVO.userImg);
+            setCookieValue("username",resultVO.data.username);
+            setCookieValue("userimg",resultVO.data.userImg);
             window.location.href="index.html";
           }
 

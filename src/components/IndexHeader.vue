@@ -4,9 +4,12 @@
     <div class="am-container header">
       <ul class="message-l">
         <div class="topMessage">
-          <div class="menu-hd">
-            <a href="#" target="_top" class="h">亲，请登录</a>
-            <a href="#" target="_top">免费注册</a>
+          <div class="menu-hd" v-if="isLogin">
+            {{username}},欢迎您
+          </div>
+          <div class="menu-hd" v-else>
+            <a href="#" target="_top" class="h" style="color: blue">亲，请登录</a> /
+            <a href="#" target="_top" style="color: blue">免费注册</a>
           </div>
         </div>
       </ul>
@@ -47,8 +50,26 @@
 </template>
 
 <script>
+
 export default {
-  name: "IndexHeader"
+  name: "IndexHeader",
+  props:{
+    username:{
+      type:String,
+    },
+    userimg:{
+      type:String,
+    },
+    isLogin:{
+      type:Boolean,
+      default:false,
+    }
+  },
+  setup(){
+
+  },
+
+
 }
 </script>
 
