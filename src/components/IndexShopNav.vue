@@ -104,7 +104,7 @@
                   <img :src="userimg">
                 </a>
                 <em>
-                  Hi,<span class="s-name">{{username}}</span>
+                  Hi,<span class="s-name">{{nickname}}</span>
                   <a href="#"><p>点击更多优惠活动</p></a>
                 </em>
               </div>
@@ -147,6 +147,7 @@ export default {
   setup(){
     let userimg=getCookieValue("userimg");
     let username=getCookieValue("username");
+    let nickname=getCookieValue("nickname");
     let categories=ref([]);
     if (userimg==null||userimg===""){
       userimg="static/images/default.png";
@@ -177,6 +178,7 @@ export default {
       userimg,
       username,
       categories,
+      nickname,
     }
   }
 

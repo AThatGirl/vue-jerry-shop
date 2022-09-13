@@ -5,7 +5,7 @@
       <ul class="message-l">
         <div class="topMessage">
           <div class="menu-hd" v-if="isLogin">
-            {{username}},欢迎您
+            {{nickname}},欢迎您
           </div>
           <div class="menu-hd" v-else>
             <a href="#" target="_top" class="h" style="color: blue">亲，请登录</a> /
@@ -63,6 +63,10 @@ export default {
     isLogin:{
       type:Boolean,
       default:false,
+    },
+    nickname:{
+      type:String,
+      default: "用户",
     }
   },
   setup(){

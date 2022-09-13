@@ -87,6 +87,7 @@ export default {
             //将用户昵称和头像路径保存到cookie
             setCookieValue("username",resultVO.data.username);
             setCookieValue("userimg",resultVO.data.userImg);
+            setCookieValue("nickname",resultVO.data.nickname);
             window.location.href="index.html";
           }
 

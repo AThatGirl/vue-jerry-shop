@@ -1,9 +1,9 @@
 <template>
-  <IndexHeader :username="username" :isLogin="isLogin" :userimg="userimg"/>
+  <IndexHeader :nickname="nickname" :username="username" :isLogin="isLogin" :userimg="userimg"/>
   <IndexImage/>
   <IndexShopNav />
-  <IndexShopMainbg/>
-  <IndexGuideAndMenu/>
+  <Activity/>
+  <CategoryRecommend/>
 </template>
 
 <script>
@@ -11,14 +11,14 @@
 import IndexHeader from "@/components/IndexHeader";
 import IndexImage from "@/components/IndexImage";
 import IndexShopNav from "@/components/IndexShopNav";
-import IndexShopMainbg from "@/components/IndexShopMainbg";
-import IndexGuideAndMenu from "@/components/IndexGuideAndMenu";
 import {ref} from "vue";
+import CategoryRecommend from "@/components/CategoryRecommend";
+import Activity from "@/components/Activity";
 export default {
   name: 'App',
   components: {
-    IndexGuideAndMenu,
-    IndexShopMainbg,
+    Activity,
+    CategoryRecommend,
     IndexShopNav,
     IndexImage,
     IndexHeader
@@ -26,12 +26,14 @@ export default {
   setup(){
     let username=ref("");
     let userimg=ref("");
+    let nickname=ref("");
     let isLogin=ref(false);
     let token=getCookieValue("token");
     if (token!=null&&token!==""){
         isLogin.value=true;
         username.value=getCookieValue("username");
         userimg.value=getCookieValue("userimg");
+        nickname.value=getCookieValue("nickname");
     }else {
       isLogin.value=false;
     }
@@ -40,6 +42,7 @@ export default {
       username,
       userimg,
       isLogin,
+      nickname,
     }
   },
 
